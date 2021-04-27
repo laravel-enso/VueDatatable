@@ -14,7 +14,12 @@ trait Data
     {
         ['table' => $table, 'config' => $config] = $this->data($request);
 
-        return (new DataBuilder($table, $config))->toArray()
-            + (new MetaBuilder($table, $config))->toArray();
+        $data = (new DataBuilder($table, $config))->toArray();
+
+        if ($request->boolean('withMeta', true)) {
+            $data += (new MetaBuilder($table, $config))->toArray();
+        }
+
+        return $data;
     }
 }
