@@ -23,21 +23,28 @@ class Number implements ComputesArrayColumns
     {
         foreach (self::$columns as $column) {
             $row[$column->get('name')] = self::format(
-                $row[$column->get('name')],
-                $column->get('number')->get('precision')
+                $row[$column->get('name')], $column->get('number')
             );
         }
 
         return $row;
     }
 
-    public static function format($value, $precision = 0)
+    public static function format($value, Obj $number)
     {
         if (! isset(self::$formatter)) {
             self::$formatter = new Formatter(App::getLocale(), Formatter::DECIMAL);
         }
 
-        self::$formatter->setAttribute(Formatter::FRACTION_DIGITS, $precision);
+        self::$formatter->setAttribute(Formatter::FRACTION_DIGITS, $number->get('precision', 0));
+
+        if ($number->has('decimal')) {
+            self::$formatter->setAttribute(Formatter::DECIMAL_SEPARATOR_SYMBOL, $number->get('decimal'));
+        }
+
+        if ($number->has('thousand')) {
+            self::$formatter->setAttribute(Formatter::GROUPING_SEPARATOR_SYMBOL, $number->get('thousand'));
+        }
 
         return self::$formatter->format($value);
     }

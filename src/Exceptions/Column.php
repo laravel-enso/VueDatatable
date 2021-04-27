@@ -54,14 +54,6 @@ class Column extends EnsoException
         ));
     }
 
-    public static function invalidMoney(string $column)
-    {
-        return new static(__(
-            'Provided money attribute for ":column" must be an object',
-            ['column' => $column]
-        ));
-    }
-
     public static function invalidNumber(string $column)
     {
         return new static(__(

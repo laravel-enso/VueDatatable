@@ -12,7 +12,6 @@ use LaravelEnso\Tables\Contracts\CustomCount;
 use LaravelEnso\Tables\Contracts\CustomCountCacheKey;
 use LaravelEnso\Tables\Contracts\Table;
 use LaravelEnso\Tables\Exceptions\Cache as Exception;
-use LaravelEnso\Tables\Services\Data\Computors\Number;
 use LaravelEnso\Tables\Services\Data\Config;
 use LaravelEnso\Tables\Services\Data\Filters;
 use ReflectionClass;
@@ -55,9 +54,9 @@ class Meta
 
         return [
             'count' => $this->count,
-            'formattedCount' => Number::format($this->count),
+            'formattedCount' => number_format($this->count),
             'filtered' => $this->filtered,
-            'formattedFiltered' => Number::format($this->filtered),
+            'formattedFiltered' => number_format($this->filtered),
             'total' => $this->total,
             'fullRecordInfo' => $this->fullRecordInfo,
             'filters' => $this->filters,

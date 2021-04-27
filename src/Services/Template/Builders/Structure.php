@@ -20,7 +20,7 @@ class Structure
 
     private const DefaultFalse = [
         'cents', 'date', 'datetime', 'enum', 'filterable', 'forceInfo', 'loading',
-        'money', 'number', 'resource', 'searchable', 'sort', 'total', 'translatable',
+        'number', 'resource', 'searchable', 'sort', 'total', 'translatable',
     ];
 
     private const TemplateOrConfigToMeta = ['searchMode', 'fullInfoRecordLimit'];

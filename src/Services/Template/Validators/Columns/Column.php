@@ -13,7 +13,7 @@ class Column
 {
     private const Validations = [
         'mandatory', 'optional', 'align', 'class', 'enum',
-        'meta', 'money', 'number', 'resource', 'tooltip',
+        'meta', 'number', 'resource', 'tooltip',
     ];
 
     private Obj $column;
@@ -76,13 +76,6 @@ class Column
     {
         if ($this->column->has('meta')) {
             Meta::validate($this->column);
-        }
-    }
-
-    private function money(): void
-    {
-        if ($this->invalidObject('money')) {
-            throw Exception::invalidMoney($this->column->get('name'));
         }
     }
 

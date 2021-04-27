@@ -45,12 +45,10 @@
             "tooltip": "My Tooltip Column Detail",
             "class": "is-custom-class",
             "align": "right",
-            "money": {
+            "number": {
                 "symbol": "$",
-                "decimal": ".",
-                "thousand": ",",
                 "precision": 2,
-                "format": "%s%v"
+                "template": "%s%v"
             }
         }
     ]
